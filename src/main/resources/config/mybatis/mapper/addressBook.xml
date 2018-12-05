@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.work.addressBook.mapper.AddressBookMapper"> <!--指定mapper位置 -->
+	<sql id="Base_Column_List">id, name, gender,birthday,number,qq,email,address
+	</sql>
+	<select id="findAll" resultType="ContactPO">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM table_address_book
+	</select>
+	<select id="findByName" parameterType="java.lang.String"
+		resultType="ContactPO">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM table_address_book WHERE
+		name like '%${name}%'
+	</select>
+	<insert id="addAddress" parameterType="ContactPO"
+		useGeneratedKeys="true" keyProperty="pid" keyColumn="pid">
+		INSERT INTO table_address_book(
+		<include refid="Base_Column_List" />
+		) VALUES
+		(null,#{name},#{gender},#{birthday},#{number},#{qq},#{email},#{address})
+	</insert>
+	<update id="updateAddress"> UPDATE table_address_book SET
+		name=#{name},gender=#{gender},birthday=#{birthday},number=#{number},qq=#{qq},email=#{email},address=#{address}
+		WHERE id=#{id}
+	</update>
+	<delete id="deleteAddressById"> DELETE FROM table_address_book WHERE id=#{id} </delete>
+</mapper>

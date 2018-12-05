@@ -1,0 +1,10 @@
+##ignore this file##
+/target
+.classpath
+.project
+.settings 
+.gradle/
+.idea
+*.iml
+.mvn/
+logs/

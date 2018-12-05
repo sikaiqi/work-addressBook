@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	xmlns:float="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css"
+	href="easyui/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="easyui/themes/icon.css" />
+<script type="text/javascript" src="easyui/jquery.min.js"></script>
+<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="js/managerAddress.js"></script>
+<style type="text/css">
+.fitem{
+	margin: 4px 0px 4px 0px;
+}
+
+</style>
+</head>
+<body>
+	<div class="easyui-layout" style="width:1000px;height:600px;">
+		<div region="center" title="通讯录">
+			<table id="datagrid"></table>
+			<div id="dgtoolbar">
+				<input class="easyui-searchbox" data-options="prompt:'按姓名模糊匹配',searcher:doSearch"></input>
+				<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newContact()">添加联系人</a> 
+				<a href="#" class="easyui-linkbutton" iconCls="icon-cut" plain="true" onclick="removeContact()">删除联系人</a>
+				<a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="editContact()">修改联系人</a>
+			</div>
+		</div>
+	</div>
+	<!--</div>-->
+	<div id="modifydg" class="easyui-dialog" style="width: 320px; height: 300px;padding: 10px 20px" data-options="left:'350px',top:'200px'" closed="true" buttons="#modifydg-buttons">
+		<div class="ftitle">联系人信息</div>
+		<form id="fim" method="post">
+			<input name="id" type="hidden"/>
+			<div class="fitem">
+				<label>姓名:</label> 
+				<input name="name" class="easyui-validatebox" required="true" />
+			</div>
+			<div class="fitem">
+				<label>性别:</label> 
+				<input name="gender" class="easyui-validatebox" required="true" />
+			</div>
+			<div class="fitem">
+				<label>生日:</label> 
+				<input name="birthday" class="easyui-validatebox" required="true" />
+			</div>
+			<div class="fitem">
+				<label>电话:</label> 
+				<input name="number" class="easyui-validatebox" required="true" />
+			</div>
+			<div class="fitem">
+				<label>Q Q:</label> 
+				<input name="qq" class="easyui-validatebox" required="true" />
+			</div>
+			<div class="fitem">
+				<label>邮箱:</label> 
+				<input name="email" class="easyui-validatebox" required="true" />
+			</div>
+			<div class="fitem">
+				<label>住址:</label> 
+				<input name="address" class="easyui-validatebox" required="true" />
+			</div>
+		</form>
+	</div>
+	<div id="modifydg-buttons">
+		<a href="#" class="easyui-linkbutton" onclick="updateContact()">保存</a> <a
+			href="#" class="easyui-linkbutton"
+			onclick="javascript:$('#modifydg').dialog('close')">取消</a>
+	</div>
+	<div id="adddg" class="easyui-dialog" style="width: 320px; height: 300px;padding: 10px 20px" data-options="left:'350px',top:'200px'" closed="true" buttons="#adddg-buttons"> 
+		<div class="ftitle">联系人信息</div>
+		<form id="fam" method="get">
+			<div class="fitem">
+				<label>姓名:</label> 
+				<input name="name" class="easyui-validatebox" required="true" />
+			</div>
+			<div class="fitem">
+				<label>性别:</label> 
+				<input name="gender" class="easyui-validatebox" required="true" />
+			</div>
+			<div class="fitem">
+				<label>生日:</label> 
+				<input name="birthday" class="easyui-validatebox" required="true" />
+			</div>
+			<div class="fitem">
+				<label>电话:</label> 
+				<input name="number" class="easyui-validatebox" required="true" />
+			</div>
+			<div class="fitem">
+				<label>Q Q:</label> 
+				<input name="qq" class="easyui-validatebox" required="true" />
+			</div>
+			<div class="fitem">
+				<label>邮箱:</label> 
+				<input name="email" class="easyui-validatebox" required="true" />
+			</div>
+			<div class="fitem">
+				<label>住址:</label> 
+				<input name="address" class="easyui-validatebox" required="true" />
+			</div>
+		</form>
+	</div>
+	<div id="adddg-buttons">
+		<a href="#" class="easyui-linkbutton" onclick="addContact()">添加</a> <a
+			href="#" class="easyui-linkbutton"
+			onclick="javascript:$('#adddg').dialog('close')">取消</a>
+	</div>
+</body>
+</html>
